@@ -1,0 +1,87 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    45deg,
+    rgba(4, 28, 50, 1) 100%,
+    rgba(95, 30, 148, 1) 100%
+  );
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+
+/* Link Styling */
+a {
+  text-decoration: none;
+}
+
+/* Timer Display */
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 5px;
+}
+
+.timer .separator {
+  margin: 0 10px;
+}
+
+/* Indicators */
+.indicators {
+  display: flex;
+  gap: 50px;
+  margin-bottom: 30px;
+}
+
+.indicator {
+  font-size: 1.5rem;
+  font-weight: 300;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  font-weight: 700;
+  background: linear-gradient(28deg, #c7f9cc 0%, #22577a 150%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.indicator.inactive {
+  opacity: 0.5;
+}
+
+/* Start Button */
+#start-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.2s ease;
+}
+
+#start-button img {
+  width: 80px;
+  height: 80px;
+  filter: invert(50%);
+}
+
+#start-button:hover img {
+  transform: scale(1.1);
+  filter: invert(100%);
+}

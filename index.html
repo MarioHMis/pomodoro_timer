@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer</title>
+
+    <!-- CSS -->
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="timer-border">
+        <div class="timer-box">
+          <div class="timer-display">
+            <p class="minutes" id="minutes">25</p>
+            <p class="separator">:</p>
+            <p class="seconds" id="seconds">00</p>
+          </div>
+        </div>
+      </div>
+      <div class="indicators">
+        <p id="work-indicator" class="active">Work</p>
+        <p id="break-indicator" class="inactive">Break</p>
+      </div>
+      <div>
+        <img
+          id="start-button"
+          src="play.png"
+          alt="Start Timer"
+          onclick="startTimer()"
+        />
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
