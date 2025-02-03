@@ -10,8 +10,8 @@ const secondsDisplay = document.getElementById("seconds");
 const alarmSound = new Audio("alarm.mp3"); // Add an alarm sound
 
 // Time Configurations
-const workTime = 25; // in minutes
-const breakTime = 5; // in minutes
+const WORK_TIME = 25; // in minutes
+const BREAK_TIME = 5; // in minutes
 
 let isBreak = false;
 let secondsRemaining = 0;
@@ -20,7 +20,7 @@ let isPaused = false;
 
 // Initialize Display
 function initializeTimer() {
-  minutesDisplay.textContent = workTime.toString().padStart(2, "0");
+  minutesDisplay.textContent = WORK_TIME.toString().padStart(2, "0");
   secondsDisplay.textContent = "00";
 }
 
@@ -30,7 +30,7 @@ function updateDisplay(minutes, seconds) {
   secondsDisplay.textContent = seconds.toString().padStart(2, "0");
 }
 
-// Timer Logic
+// Start Timer
 function startTimer() {
   if (interval) return;
 
@@ -38,7 +38,7 @@ function startTimer() {
   pauseButton.style.display = "inline-block";
   resetButton.style.display = "inline-block";
 
-  let minutesRemaining = isBreak ? breakTime - 1 : workTime - 1;
+  let minutesRemaining = isBreak ? BREAK_TIME - 1 : WORK_TIME - 1;
   secondsRemaining = 59;
 
   interval = setInterval(() => {
@@ -55,7 +55,7 @@ function startTimer() {
           interval = null;
           alarmSound.play();
           isBreak = !isBreak;
-          minutesRemaining = isBreak ? breakTime - 1 : workTime - 1;
+          minutesRemaining = isBreak ? BREAK_TIME - 1 : WORK_TIME - 1;
           toggleMode();
           startTimer();
         }
