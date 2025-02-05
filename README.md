@@ -1,10 +1,10 @@
-# Pomodoro Timer 🍅⏱️
+#Pomodoro Timer 🍅⏱️
 
 Welcome to the **Pomodoro Timer**! This is a simple and effective application to manage your time using the Pomodoro Technique. Perfect for boosting your productivity and staying focused.
 
 ---
 
-## Features ✨
+##Features ✨
 
 - **Pomodoro Timer**: 25 minutes of work and 5 minutes of break.
 - **Intuitive Interface**: Clean and easy-to-use design.
@@ -14,7 +14,7 @@ Welcome to the **Pomodoro Timer**! This is a simple and effective application to
 
 ---
 
-## How to Use 🚀
+##How to Use 🚀
 
 1. **Start the Timer**: Click the "Start" button to begin the timer.
 2. **Pause the Timer**: If you need a break, click "Pause".
@@ -23,12 +23,12 @@ Welcome to the **Pomodoro Timer**! This is a simple and effective application to
 
 ---
 
-## Installation and Setup ⚙️
+##Installation and Setup ⚙️
 
-### Requirements
+###Requirements
 - A modern web browser (Chrome, Firefox, Edge, etc.).
 
-### Steps to Run the Project
+###Steps to Run the Project
 1. Clone this repository:
    ```bash
    git clone https://github.com/MarioHMis/pomodoro_timer
@@ -49,12 +49,12 @@ Project Structure 📂
 
 
 pomodoro-timer/
-├── index.html          # Main application file
-├── styles.css          # CSS styles for the interface
-├── app.js              # Timer logic in JavaScript
-└── README.md           # Project documentation
+├── index.html          #Main application file
+├── styles.css          #CSS styles for the interface
+├── app.js              #Timer logic in JavaScript
+└── README.md           #Project documentation
 
-Customization 🎨
+##Customization 🎨
 
 You can customize the timer by modifying the following variables in the styles.css file:
 
@@ -62,7 +62,7 @@ You can customize the timer by modifying the following variables in the styles.c
 
     Timings: Adjust work and break times in the app.js file.
 
-Technologies Used 💻
+##Technologies Used 💻
 
     HTML5: Application structure.
 
@@ -70,7 +70,7 @@ Technologies Used 💻
 
     JavaScript: Timer logic and event handling.
 
-Contributions 🤝
+##Contributions 🤝
 
 Contributions are welcome! If you have ideas to improve this project, follow these steps:
 
@@ -84,10 +84,7 @@ Contributions are welcome! If you have ideas to improve this project, follow the
 
     Open a Pull Request.
 
-License 📄
 
-This project is licensed under the MIT License. For more details, see the LICENSE file.
-Credits 🙌
 
     Design inspired by the Pomodoro Technique.
 
