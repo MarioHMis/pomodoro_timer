@@ -1,89 +1,77 @@
-class PomodoroTimer {
-  constructor() {
-    // Selectores del DOM
-    this.workIndicator = document.getElementById("work-indicator");
-    this.breakIndicator = document.getElementById("break-indicator");
-    this.startButton = document.getElementById("start-button");
-    this.pauseButton = document.getElementById("pause-button");
-    this.resetButton = document.getElementById("reset-button");
-    this.minutesDisplay = document.getElementById("minutes");
-    this.secondsDisplay = document.getElementById("seconds");
-    this.alarmSound = new Audio("alarm.mp3"); // Sonido de alarma
+const PomodoroTimer = (function () {
+  // Variables privadas
+  let isBreak = false;
+  let secondsRemaining = 0;
+  let interval = null;
+  let isPaused = false;
 
-    // Configuración del temporizador
-    this.WORK_TIME = 25; // Minutos de trabajo
-    this.BREAK_TIME = 5; // Minutos de descanso
-    this.isBreak = false;
-    this.secondsRemaining = 0;
-    this.interval = null;
-    this.isPaused = false;
+  // Configuración del temporizador
+  const WORK_TIME = 25; // Minutos de trabajo
+  const BREAK_TIME = 5; // Minutos de descanso
 
-    // Event Listeners
-    this.startButton.addEventListener("click", () => this.startTimer());
-    this.pauseButton.addEventListener("click", () => this.pauseTimer());
-    this.resetButton.addEventListener("click", () => this.resetTimer());
-
-    // Inicializar el temporizador al cargar
-    window.onload = () => this.initializeTimer();
-  }
-
-  /**
-   * Inicializa el temporizador con los valores predeterminados.
-   */
-  initializeTimer() {
-    try {
-      this.updateDisplay(this.WORK_TIME, 0);
-      this.toggleMode();
-    } catch (error) {
-      console.error("Error al inicializar el temporizador:", error);
-    }
-  }
+  // Selectores del DOM
+  const workIndicator = document.getElementById("work-indicator");
+  const breakIndicator = document.getElementById("break-indicator");
+  const startButton = document.getElementById("start-button");
+  const pauseButton = document.getElementById("pause-button");
+  const resetButton = document.getElementById("reset-button");
+  const minutesDisplay = document.getElementById("minutes");
+  const secondsDisplay = document.getElementById("seconds");
+  const alarmSound = new Audio("alarm.mp3"); // Sonido de alarma
 
   /**
    * Actualiza el display con minutos y segundos formateados.
    * @param {number} minutes - Minutos a mostrar.
    * @param {number} seconds - Segundos a mostrar.
    */
-  updateDisplay(minutes, seconds) {
-    this.minutesDisplay.textContent = minutes.toString().padStart(2, "0");
-    this.secondsDisplay.textContent = seconds.toString().padStart(2, "0");
+  function updateDisplay(minutes, seconds) {
+    minutesDisplay.textContent = minutes.toString().padStart(2, "0");
+    secondsDisplay.textContent = seconds.toString().padStart(2, "0");
+  }
+
+  /**
+   * Inicializa el temporizador con los valores predeterminados.
+   */
+  function initializeTimer() {
+    try {
+      updateDisplay(WORK_TIME, 0);
+      toggleMode();
+    } catch (error) {
+      console.error("Error al inicializar el temporizador:", error);
+    }
   }
 
   /**
    * Inicia el temporizador y gestiona la cuenta regresiva.
    */
-  startTimer() {
+  function startTimer() {
     try {
-      if (this.interval) return;
+      if (interval) return;
 
-      this.startButton.style.display = "none";
-      this.pauseButton.style.display = "inline-block";
-      this.resetButton.style.display = "inline-block";
+      startButton.style.display = "none";
+      pauseButton.style.display = "inline-block";
+      resetButton.style.display = "inline-block";
 
-      let minutesRemaining = this.isBreak
-        ? this.BREAK_TIME - 1
-        : this.WORK_TIME - 1;
-      this.secondsRemaining = 59;
+      let minutesRemaining = isBreak ? BREAK_TIME - 1 : WORK_TIME - 1;
+      secondsRemaining = 59;
 
-      this.interval = setInterval(() => {
-        if (!this.isPaused) {
-          this.updateDisplay(minutesRemaining, this.secondsRemaining);
-          this.secondsRemaining--;
+      interval = setInterval(() => {
+        if (!isPaused) {
+          updateDisplay(minutesRemaining, secondsRemaining);
+          secondsRemaining--;
 
-          if (this.secondsRemaining < 0) {
-            this.secondsRemaining = 59;
+          if (secondsRemaining < 0) {
+            secondsRemaining = 59;
             minutesRemaining--;
 
             if (minutesRemaining < 0) {
-              clearInterval(this.interval);
-              this.interval = null;
-              this.alarmSound.play();
-              this.isBreak = !this.isBreak;
-              minutesRemaining = this.isBreak
-                ? this.BREAK_TIME - 1
-                : this.WORK_TIME - 1;
-              this.toggleMode();
-              this.startTimer();
+              clearInterval(interval);
+              interval = null;
+              alarmSound.play();
+              isBreak = !isBreak;
+              minutesRemaining = isBreak ? BREAK_TIME - 1 : WORK_TIME - 1;
+              toggleMode();
+              startTimer();
             }
           }
         }
@@ -96,10 +84,10 @@ class PomodoroTimer {
   /**
    * Pausa o reanuda el temporizador.
    */
-  pauseTimer() {
+  function pauseTimer() {
     try {
-      this.isPaused = !this.isPaused;
-      this.pauseButton.textContent = this.isPaused ? "Resume" : "Pause";
+      isPaused = !isPaused;
+      pauseButton.textContent = isPaused ? "Resume" : "Pause";
     } catch (error) {
       console.error("Error al pausar el temporizador:", error);
     }
@@ -108,16 +96,16 @@ class PomodoroTimer {
   /**
    * Resetea el temporizador a su estado inicial.
    */
-  resetTimer() {
+  function resetTimer() {
     try {
-      clearInterval(this.interval);
-      this.interval = null;
-      this.isBreak = false;
-      this.isPaused = false;
-      this.initializeTimer();
-      this.startButton.style.display = "inline-block";
-      this.pauseButton.style.display = "none";
-      this.resetButton.style.display = "none";
+      clearInterval(interval);
+      interval = null;
+      isBreak = false;
+      isPaused = false;
+      initializeTimer();
+      startButton.style.display = "inline-block";
+      pauseButton.style.display = "none";
+      resetButton.style.display = "none";
     } catch (error) {
       console.error("Error al reiniciar el temporizador:", error);
     }
@@ -126,23 +114,23 @@ class PomodoroTimer {
   /**
    * Cambia el estado entre "Trabajo" y "Descanso".
    */
-  toggleMode() {
+  function toggleMode() {
     try {
-      if (this.isBreak) {
-        this.workIndicator.classList.replace(
+      if (isBreak) {
+        workIndicator.classList.replace(
           "pomodoro__indicator--active",
           "pomodoro__indicator--inactive"
         );
-        this.breakIndicator.classList.replace(
+        breakIndicator.classList.replace(
           "pomodoro__indicator--inactive",
           "pomodoro__indicator--active"
         );
       } else {
-        this.breakIndicator.classList.replace(
+        breakIndicator.classList.replace(
           "pomodoro__indicator--active",
           "pomodoro__indicator--inactive"
         );
-        this.workIndicator.classList.replace(
+        workIndicator.classList.replace(
           "pomodoro__indicator--inactive",
           "pomodoro__indicator--active"
         );
@@ -151,7 +139,20 @@ class PomodoroTimer {
       console.error("Error al cambiar el modo de trabajo/descanso:", error);
     }
   }
-}
 
-// Instanciar la clase cuando cargue la página
-document.addEventListener("DOMContentLoaded", () => new PomodoroTimer());
+  // Event Listeners
+  startButton.addEventListener("click", startTimer);
+  pauseButton.addEventListener("click", pauseTimer);
+  resetButton.addEventListener("click", resetTimer);
+
+  // Inicializar el temporizador al cargar
+  document.addEventListener("DOMContentLoaded", initializeTimer);
+
+  // Métodos públicos (para pruebas si se requieren)
+  return {
+    start: startTimer,
+    pause: pauseTimer,
+    reset: resetTimer,
+    init: initializeTimer,
+  };
+})();
