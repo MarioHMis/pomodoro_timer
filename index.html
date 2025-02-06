@@ -8,30 +8,57 @@
     <link href="styles.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <div class="container">
+    <header>
       <h1>Pomodoro Timer</h1>
+    </header>
 
-      <div class="timer-border">
-        <div class="timer-box">
-          <div class="timer-display">
-            <p class="minutes" id="minutes">25</p>
-            <p class="separator">:</p>
-            <p class="seconds" id="seconds">00</p>
-          </div>
+    <main class="pomodoro">
+      <section class="pomodoro__timer">
+        <div class="pomodoro__timer-display" aria-live="assertive">
+          <p class="pomodoro__timer-minutes" id="minutes">25</p>
+          <p class="pomodoro__timer-separator">:</p>
+          <p class="pomodoro__timer-seconds" id="seconds">00</p>
         </div>
-      </div>
+      </section>
 
-      <div class="indicators">
-        <p id="work-indicator" class="indicator active">Work</p>
-        <p id="break-indicator" class="indicator inactive">Break</p>
-      </div>
+      <section class="pomodoro__indicators">
+        <p
+          id="work-indicator"
+          class="pomodoro__indicator pomodoro__indicator--active"
+        >
+          Work
+        </p>
+        <p
+          id="break-indicator"
+          class="pomodoro__indicator pomodoro__indicator--inactive"
+        >
+          Break
+        </p>
+      </section>
 
-      <div class="controls">
-        <button id="start-button">Start</button>
-        <button id="pause-button" style="display: none">Pause</button>
-        <button id="reset-button" style="display: none">Reset</button>
-      </div>
-    </div>
+      <section class="pomodoro__controls">
+        <button
+          id="start-button"
+          class="pomodoro__button pomodoro__button--start"
+        >
+          Start
+        </button>
+        <button
+          id="pause-button"
+          class="pomodoro__button pomodoro__button--pause"
+          style="display: none"
+        >
+          Pause
+        </button>
+        <button
+          id="reset-button"
+          class="pomodoro__button pomodoro__button--reset"
+          style="display: none"
+        >
+          Reset
+        </button>
+      </section>
+    </main>
 
     <script src="app.js"></script>
   </body>

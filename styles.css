@@ -21,63 +21,75 @@
 
 body {
   height: 100vh;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: linear-gradient(
     45deg,
-    var(--color-background) 100%,
-    var(--color-secondary) 100%
+    var(--color-background),
+    var(--color-secondary)
   );
   font-family: var(--font-primary);
   color: var(--color-text);
   text-align: center;
+  padding: 20px;
 }
 
-.timer-box {
+/* Pomodoro */
+.pomodoro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90%;
+  width: 400px;
+}
+
+/* Timer */
+.pomodoro__timer {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 300;
   letter-spacing: 5px;
   background: rgba(255, 255, 255, 0.1);
-  padding: 25px;
+  padding: 20px;
   border-radius: 20px;
   box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
   margin-bottom: 20px;
+  width: 100%;
 }
 
-.timer-display {
+.pomodoro__timer-display {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.separator {
+.pomodoro__timer-separator {
   margin: 0 10px;
 }
 
-.indicators {
+/* Indicators */
+.pomodoro__indicators {
   display: flex;
   justify-content: center;
-  gap: 50px;
-  margin-bottom: 30px;
+  gap: 20px;
+  margin-bottom: 20px;
   width: 100%;
 }
 
-.indicator {
-  font-size: 1.5rem;
+.pomodoro__indicator {
+  font-size: 1.2rem;
   font-weight: 300;
-  transition: all 0.3s ease;
   text-align: center;
+  transition: all 0.3s ease;
   flex: 1;
   max-width: 100px;
 }
 
-.indicator.active {
+.pomodoro__indicator--active {
   font-weight: 700;
   background: linear-gradient(28deg, var(--color-active) 0%, #22577a 150%);
   -webkit-background-clip: text;
@@ -85,41 +97,117 @@ body {
   color: transparent;
 }
 
-.indicator.inactive {
+.pomodoro__indicator--inactive {
   opacity: 0.5;
 }
 
-.controls {
+/* Controls */
+.pomodoro__controls {
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
+  gap: 10px;
+  margin-top: 15px;
+  width: 100%;
 }
 
-button {
+.pomodoro__button {
+  flex: 1;
   padding: var(--button-padding);
   font-size: var(--button-font-size);
   border: none;
   border-radius: var(--button-radius);
   cursor: pointer;
   transition: transform 0.2s ease, background 0.3s;
+  color: var(--color-text);
 }
 
-#start-button {
+.pomodoro__button--start {
   background-color: var(--color-button-start);
-  color: var(--color-text);
 }
 
-#pause-button {
+.pomodoro__button--pause {
   background-color: var(--color-button-pause);
-  color: var(--color-text);
 }
 
-#reset-button {
+.pomodoro__button--reset {
   background-color: var(--color-button-reset);
-  color: var(--color-text);
 }
 
-button:hover {
-  transform: scale(1.1);
+.pomodoro__button:hover {
+  transform: scale(1.05);
+}
+
+/* ───────────────────────────────────── */
+/*  📌 RESPONSIVE DESIGN  */
+/* ───────────────────────────────────── */
+
+/* 🔹 Teléfonos (Menos de 480px) */
+@media (max-width: 480px) {
+  .pomodoro {
+    width: 100%;
+  }
+
+  .pomodoro__timer {
+    font-size: 2.8rem;
+    padding: 15px;
+  }
+
+  .pomodoro__indicator {
+    font-size: 1rem;
+    max-width: 80px;
+  }
+
+  .pomodoro__controls {
+    flex-direction: column;
+  }
+
+  .pomodoro__button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+}
+
+/* 🔹 Tablets (481px - 768px) */
+@media (max-width: 768px) {
+  .pomodoro {
+    width: 100%;
+  }
+
+  .pomodoro__timer {
+    font-size: 3rem;
+    padding: 20px;
+  }
+
+  .pomodoro__indicator {
+    font-size: 1.1rem;
+  }
+
+  .pomodoro__controls {
+    gap: 10px;
+  }
+
+  .pomodoro__button {
+    font-size: 1rem;
+    padding: 12px 0;
+  }
+}
+
+/* 🔹 Laptops y pantallas grandes (Más de 1024px) */
+@media (min-width: 1024px) {
+  .pomodoro {
+    width: 450px;
+  }
+
+  .pomodoro__timer {
+    font-size: 4rem;
+    padding: 25px;
+  }
+
+  .pomodoro__controls {
+    gap: 15px;
+  }
+
+  .pomodoro__button {
+    font-size: 1.2rem;
+  }
 }
