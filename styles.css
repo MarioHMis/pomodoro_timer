@@ -90,6 +90,7 @@ body {
 }
 
 .pomodoro__indicator--active {
+  /*colocar __  guion bajo*/
   font-weight: 700;
   background: linear-gradient(28deg, var(--color-active) 0%, #22577a 150%);
   -webkit-background-clip: text;

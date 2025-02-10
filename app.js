@@ -17,6 +17,8 @@ const PomodoroTimer = (function () {
   const resetButton = document.getElementById("reset-button");
   const minutesDisplay = document.getElementById("minutes");
   const secondsDisplay = document.getElementById("seconds");
+
+  /**@description Sonido de alarma */
   const alarmSound = new Audio("alarm.mp3"); // Sonido de alarma
 
   /**
@@ -61,6 +63,7 @@ const PomodoroTimer = (function () {
           secondsRemaining--;
 
           if (secondsRemaining < 0) {
+            // catch para manejar errores
             secondsRemaining = 59;
             minutesRemaining--;
 
