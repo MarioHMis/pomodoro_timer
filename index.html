@@ -2,41 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pomodoro Timer</title>
-    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Pomodoro Timer</h1>
-    </header>
-
-    <main class="pomodoro">
-      <section class="pomodoro__timer">
-        <div class="pomodoro__timer-display" aria-live="assertive">
-          <p class="pomodoro__timer-minutes" id="minutes">25</p>
-          <p class="pomodoro__timer-separator">:</p>
-          <p class="pomodoro__timer-seconds" id="seconds">00</p>
-        </div>
-      </section>
-
-      <section class="pomodoro__indicators">
-        <p
+    <div class="pomodoro">
+      <!-- Indicadores de estado -->
+      <div class="pomodoro__indicators">
+        <div
           id="work-indicator"
           class="pomodoro__indicator pomodoro__indicator--active"
         >
           Work
-        </p>
-        <p
+        </div>
+        <div
           id="break-indicator"
           class="pomodoro__indicator pomodoro__indicator--inactive"
         >
           Break
-        </p>
-      </section>
+        </div>
+      </div>
 
-      <section class="pomodoro__controls">
+      <!-- Temporizador -->
+      <div class="pomodoro__timer">
+        <div class="pomodoro__timer-display">
+          <span id="minutes">25</span>
+          <span class="pomodoro__timer-separator">:</span>
+          <span id="seconds">00</span>
+        </div>
+      </div>
+
+      <!-- Controles -->
+      <div class="pomodoro__controls">
         <button
           id="start-button"
           class="pomodoro__button pomodoro__button--start"
@@ -57,9 +55,8 @@
         >
           Reset
         </button>
-      </section>
-    </main>
-
-    <script src="app.js"></script>
+      </div>
+    </div>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
